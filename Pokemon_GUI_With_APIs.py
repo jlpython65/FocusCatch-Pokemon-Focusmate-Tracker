@@ -55,7 +55,7 @@ from pathlib import Path
 
 def pokeballs_given():
     def get_beeminder_focusmate_goal():
-        pyminder = Pyminder(user='name', token='insert token here')
+        pyminder = Pyminder(user=config.get("beeminder_credentials","first_name"), token=config.get("beeminder_credentials","token"))
         goals = pyminder.get_goals()
         goal = goals[0]
         return goal
@@ -118,7 +118,7 @@ class Encounter(tk.Frame):
         
         def open_CC_with_pokemon_image(image):
             pokemon_path = str(image_path_base / f"{image}")
-            CC_path = GUI_path_base / "ClusterColor_v1.0_win64/ClusterColor.exe"
+            CC_path = r"C:\Users\username_here\Downloads\ClusterColor_win64\ClusterColor_v1.0_win64\ClusterColor.exe"
             launch_CC =subprocess.Popen(CC_path)
             pyperclip.copy(pokemon_path)
 
@@ -127,7 +127,7 @@ class Encounter(tk.Frame):
             balls_thrown = balls_thrown + 1
             
             remaining_balls_label.configure(text=f"{balls - int(balls_thrown)}x")
-            catch = random.randint(0,1)
+            catch = random.randint(0,10)
             if catch != 1:
                 print("The pokemon broke out of the ball!")
             if catch == 1:
@@ -147,7 +147,7 @@ class Encounter(tk.Frame):
         self.catch_button.pack(side="left")
 
         ball_label = ttk.Label(self.button_frame)
-        self.img_pokeball1 = tk.PhotoImage(file=image_path_base / "pokeball_icon.png")
+        self.img_pokeball1 = tk.PhotoImage(file=GUI_path_base / "pokeball (1).png")
         ball_label.configure(
             compound="center",
             font="{Arial Narrow} 12 {bold}",
@@ -201,14 +201,11 @@ class Caught(tk.Frame):
 class upload_imgur():
     def __init__(self):
         print("Uploading to Imgur...")
-        config = configparser.ConfigParser()
-        config.read("auth.ini")
+        client_id = config.get("imgur_credentials","client_id")
+        client_secret = config.get("imgur_credentials", "client_secret")
 
-        client_id = config.get("credentials","client_id")
-        client_secret = config.get("credentials", "client_secret")
-
-        imgur_username = config.get("credentials","imgur_username")
-        imgur_password = config.get("credentials","imgur_password")
+        imgur_username = config.get("imgur_credentials","imgur_username")
+        imgur_password = config.get("imgur_credentials","imgur_password")
 
         self.client = ImgurClient(client_id,client_secret)
         authorization_url = self.client.get_auth_url('pin')
@@ -245,10 +242,10 @@ class upload_imgur():
 
     def upload_image(self,nickname):
 
-        album_id = self.client.get_account_album_ids("imgur_username")
+        album_id = self.client.get_account_album_ids("hightierhuman")
         image_path = image_path_base / f"recolors\{nickname}.png"
 
-        album_id = self.client.get_account_album_ids("imgur_username")
+        album_id = self.client.get_account_album_ids("hightierhuman")
 
         pc_box = album_id[0]
         config = {
@@ -264,10 +261,10 @@ class upload_imgur():
 
 
     def PCBOX(self,link_for_uploaded_image):
-        token = "notion_token"
+        token = config.get("notion_credentials","token")
 
         payload = {
-            'parent': {'database_id': 'a968846ad71d4d40af12443b01661e4c'},       
+            'parent': {'database_id': config.get("notion_credentials","database_id")},       
             'properties': {
                         'Name': {
                                 'title': [{"text":{"content":f"{nicknamelist[0]}"}}],
@@ -297,8 +294,11 @@ class upload_imgur():
         print(f"{nicknamelist[0]} has been sent to the PC BOX in Notion!")
         
 if __name__ == "__main__":
-    image_path_base = Path(r"C:\Users\name\Documents\1Python\Pokemon_Game\GUI\Pokemon_Images")
-    GUI_path_base = Path(r"C:\Users\name\Documents\1Python\Pokemon_Game\GUI")
+    config = configparser.ConfigParser()
+    config.read("config.ini")
+    
+    image_path_base = Path(r"C:\Users\username_here\Documents\1Python\Pokemon_Game\Pokemon_Images\gen5")
+    GUI_path_base = Path(r"C:\Users\username_here\Documents\1Python\Pokemon_Game\GUI_others")
     image =random.choice(os.listdir(image_path_base))
     pokemon_name = image.replace(".png","" )
     
