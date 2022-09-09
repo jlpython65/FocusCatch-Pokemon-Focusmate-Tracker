@@ -20,7 +20,7 @@ import pprint
 import time
 from pyminder.pyminder import Pyminder
 import tkinter as tk
-from tkinter import ttk
+from tkinter import EW, W, ttk
 
 from PIL import ImageTk, Image  
 
@@ -186,4 +186,3 @@ if __name__ == "__main__":
     nicknamelist = []
     root.mainloop()
 
-faegpagwpapwgwa
