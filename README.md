@@ -9,7 +9,7 @@ Selenium
 ## Getting Started
 ### Without APIs
 If you're content with having the pokemon in your computer gallery, run the file: Pokemon_GUI_Without_APIs.py.
-### With APIs
+### With APIs: []
 If you so happen to use Focusmate, Beeminder, and Notion in your productivity workflow, this section will prove useful. 
 
 First you need to get the following credentials listed in the config.ini file and assign them to their respective variable.
