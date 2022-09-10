@@ -1,16 +1,15 @@
 # Pokemon_GUI_Game
 A GUI game where you're rewarded for attending Focusmate sessions. When done so, you can catch Pokemon and upload them to a gallery. 
 
-### Built With
+## Built With
 Tkinter
 Selenium
 	Chromedriver
 
 ## Getting Started
-### Prerequisites
-#### Without APIs
+### Without APIs
 If you're content with having the pokemon in your computer gallery, run the file: Pokemon_GUI_Without_APIs.py.
-#### With APIs
+### With APIs
 If you so happen to use Focusmate, Beeminder, and Notion in your productivity workflow, this section will prove useful. 
 
 First you need to get the following credentials listed in the config.ini file and assign them to their respective variable.
