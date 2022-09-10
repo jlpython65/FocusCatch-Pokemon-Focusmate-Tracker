@@ -175,8 +175,9 @@ class Caught(tk.Frame):
 
         
 if __name__ == "__main__":
-    image_path_base = Path(r"C:\Users\username_here\Documents\1Python\Pokemon_Game\GUI\Pokemon_Images")
-    GUI_path_base = Path(r"C:\Users\username_here\Documents\1Python\Pokemon_Game\GUI")
+    GUI_path_base = Path(os.getcwd())
+    image_path_base = Path(GUI_path_base / r"Pokemon_Images")
+
     image =random.choice(os.listdir(image_path_base))
     pokemon_name = image.replace(".png","" )
     

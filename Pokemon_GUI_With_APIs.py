@@ -66,18 +66,18 @@ def pokeballs_given():
         total_sessions_as_of_today = goal.get_data_sum(today)
         total_sessions_as_of_yesterday = goal.get_data_sum(yesterday)
         sessions_done_today = total_sessions_as_of_today - total_sessions_as_of_yesterday 
-        #What would be more simple is just getting the data session done today instead
-        #of calculating the totals
         print(f"{sessions_done_today} sessions done today!")
         return sessions_done_today
 
     goal = get_beeminder_focusmate_goal()
     sessions_done_today = get_sessions_done_today(goal)
     
-    balls_list = [10,10] #I'll add more balls later
+    balls_list = [10,15] 
     global balls
-    if sessions_done_today > 0:
+    if sessions_done_today > 1:
         balls = balls_list[0]
+    if sessions_done_today > 2:
+        balls = balls_list[1]
 
 class windows(tk.Tk):
     def __init__(self):
@@ -250,8 +250,8 @@ class upload_imgur():
         pc_box = album_id[0]
         config = {
             "album": pc_box,
-            "name" : f"{pokemon_name}",#pokemon_name
-            "title" : f"{nickname}",#nickname
+            "name" : f"{pokemon_name}",
+            "title" : f"{nickname}",
             "description": "uploaded"
         }
         upload = self.client.upload_from_path(image_path,config = config, anon=False)
@@ -296,7 +296,7 @@ class upload_imgur():
 if __name__ == "__main__":
     config = configparser.ConfigParser()
     config.read("config.ini")
-    
+
     image_path_base = Path(r"C:\Users\username_here\Documents\1Python\Pokemon_Game\Pokemon_Images\gen5")
     GUI_path_base = Path(r"C:\Users\username_here\Documents\1Python\Pokemon_Game\GUI_others")
     image =random.choice(os.listdir(image_path_base))
