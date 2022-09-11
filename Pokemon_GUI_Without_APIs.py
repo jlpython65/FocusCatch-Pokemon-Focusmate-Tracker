@@ -102,7 +102,7 @@ class Encounter(tk.Frame):
             balls_thrown = balls_thrown + 1
             
             remaining_balls_label.configure(text=f"{10 - int(balls_thrown)}x")
-            catch = random.randint(0,10)
+            catch = random.randint(0,1)
             if catch != 1:
                 print("The pokemon broke out of the ball!")
             if catch == 1:

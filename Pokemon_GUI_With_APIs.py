@@ -118,7 +118,7 @@ class Encounter(tk.Frame):
         
         def open_CC_with_pokemon_image(image):
             pokemon_path = str(image_path_base / f"{image}")
-            CC_path = r"C:\Users\username_here\Downloads\ClusterColor_win64\ClusterColor_v1.0_win64\ClusterColor.exe"
+            CC_path = GUI_path_base /  r"ClusterColor_v1.0_win64\ClusterColor.exe"
             launch_CC =subprocess.Popen(CC_path)
             pyperclip.copy(pokemon_path)
 
