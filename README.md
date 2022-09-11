@@ -1,5 +1,5 @@
 # Pokemon_GUI_Game
-[demogif](https://github.com/jlpython65/Pokemon_GUI_Game1/blob/main/ReadMe/demo.gif)
+![demogif](https://github.com/jlpython65/Pokemon_GUI_Game1/blob/main/ReadMe/demo.gif)
 A GUI game where you're rewarded for attending Focusmate sessions. When done so, you can catch Pokemon and upload them to a gallery. 
 
 ## Built With
