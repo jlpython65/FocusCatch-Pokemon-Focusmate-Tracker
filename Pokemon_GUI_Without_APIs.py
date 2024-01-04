@@ -165,7 +165,7 @@ class CapturedPokemonFrame(tk.Frame):
 
 
     
-        self.setup_pokemon_display_label
+        self.setup_pokemon_display_label()
 
         nickname_frame = self.setup_nickname_frame()
         self.setup_capture_message(nickname_frame)
